@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- link css -->
+	<link href="css/style.css" rel="stylesheet">
+	
+
+	<title>Delivery Detail</title>
+	
+    
+</head>
+<body>
+	<!-- navigation -->
+	<div class="nav">
+			<a href="#"> <- back to cart</a>
+		<div class="nav-centere1">
+			<a href="#" class="active"> Delivery </a>
+		</div>
+		<div class="nav-centere2">
+			<a href="#">Payment</a>
+		</div>
+		<div class="nav-centere3">
+			<a href="#">Finish</a>
+		</div>
+	</div>
+
+	<!-- containt -->
+
+	<div class="row">
+		<div class="column" id="ffm">
+			<h1>Delivery details</h1>
+			<form>
+				<input type="text" name="email" placeholder="email" :class="{ 'is-invalid': valEmail }" v-model="email">
+				<input type="number" name="phone" placeholder="phone number" :class="{ 'is-invalid': valPhone }" v-model="phone">
+				<input type="text2" name="Address" placeholder="Delivery Address" :class="{ 'is-invalid': valAddress }" v-model="address">
+			</form>
+		</div>
+		<div class="column" id="yn">
+			<label class="container">Send as dropshipper
+				<input type="checkbox" name="" checked="checked" v-model="type" value="1">
+				<span class="checkmark"></span>
+			</label>
+			<br>
+			<div v-if="type">
+					<input type="text" name="email" placeholder="dropshipper name">
+					<input type="text" name="phone" placeholder="Dropshipper phone number">
+			</div>
+		</div>
+		<div class="column">
+			<div class="card">
+				<div class="card-container">
+					<h1>summary</h1>
+					<label class="txt">10 item purchase</label>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<label class="txt">Cost of goods</label>
+					<label class="price"><b>500.000</b></label>
+					<br>
+					<label class="txt">Dropshipping fee</label>
+					<label class="price"><b>5.900</b></label>
+					<h1>Total  <label class="price">505,900</label> </h1>
+					<br>
+					<a href="Payment.html" class="button">Continue to Payment</a>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<script type="text/javascript" src="js/vue.js"></script>
+
+
+	<script>
+		var valid = new Vue({
+        	el : "#ffm",
+        	data: {
+        		email: '',
+        		phone: '',
+        		address: ''
+        	},
+        	methods: {
+                resetForm() {
+                    this.email = ''
+                    this.phone = ''
+                    this.address = ''
+                }
+            },
+            computed: {
+            	valEmail(){
+            		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    if (re.test(this.email)) {
+                        return false;
+                    }
+                    return true;
+            	},
+            	valPhone(){
+            		if (this.phone.length > 6 && this.phone.length <21) {
+                        return true;
+                    }
+                    return false;
+
+            	}
+  				
+  			}
+
+
+        	})
+
+        var form = new Vue({
+            el: "#yn",
+            data: {
+                type: ''
+            },
+
+            computed: {
+            	changeTitle(){
+            		this.resetForm()
+    				return this.type == 0 ? 'Yes':'No'
+            	}
+  				
+  			}
+			
+
+        })
+
+       
+
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- link css -->
+	<link href="css/style.css" rel="stylesheet">
+	<script type="text/javascript" src="js/vue.js"></script>
+
+	<title>Payment</title>
+	
+    
+</head>
+<body>
+	<!-- navigation -->
+	<div class="nav">
+			<a href="DeliveryDetail.html"> <- back to Delivery</a>
+		<div class="nav-centere1">
+			<a href="#" class="active"> Delivery </a>
+		</div>
+		<div class="nav-centere2">
+			<a href="#" class="active">Payment</a>
+		</div>
+		<div class="nav-centere3">
+			<a href="#">Finish</a>
+		</div>
+	</div>
+
+	<!-- container -->
+
+	<div class="row">
+		<div class="column middle">
+			<div id="form-shipping">
+				<h1>Shipment</h1>
+				<section>
+					<div>
+						<input type="radio" id="control_1" name="Shipment" value="go-send" checked v-model="Shipping" >
+						<label class="label-e" for="control_1">
+							<h4>GO-SEND</h4>
+							<p>15.000</p>
+						</label>
+					</div>
+					<div>
+						<input type="radio" id="control_2" name="Shipment" v-model="Shipping" value="JNE" >
+						<label class="label-e" for="control_2">
+							<h4>JNE</h4>
+							<p>9.000</p>
+						</label>
+					</div>
+					<div>
+						<input type="radio" id="control_3" name="Shipment" value="PersonaCourier" v-model="Shipping" >
+						<label class="label-e" for="control_3">
+							<h4>Personal Courier</h4>
+							<p>20.000</p>
+						</label>
+					</div>
+				</section>
+			</div>
+			
+
+				<h1>Payment</h1>
+				<section>
+					<div>
+						<input type="radio" id="control_a1" name="Payment" value="e-wallet" >
+						<label class="label-e" for="control_a1">
+							<h4>e-wallet</h4>
+							<p>1.015.000</p>
+						</label>
+					</div>
+					<div>
+						<input type="radio" id="control_a2" name="Payment" value="bank" >
+						<label class="label-e" for="control_a2">
+							<h4>Bank transfer</h4>
+						</label>
+					</div>
+					<div>
+						<input type="radio" id="control_a3" name="Payment" value="virtual" >
+						<label class="label-e" for="control_a3">
+							<h4>Virtual Account</h4>
+						</label>
+					</div>
+				</section>
+		</div>
+		<div class="column side">
+			<div class="card">
+				<div class="card-container">
+					<h1>summary</h1>
+					<label class="txt">10 item purchase</label>
+					<br>
+					<label class="txt">Delivery estimation</label>
+					<br>
+					<div id="form-InShipping">
+						<label class="txt">{{ hari }} by {{ Shipping }}</label>
+					</div>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<label class="txt">Cost of goods</label>
+					<label class="price"><b>500.000</b></label>
+					<br>
+					<label class="txt">Dropshipping fee</label>
+					<label class="price"><b>5.900</b></label>
+					<h1>Total  <label class="price">505,900</label> </h1>
+					<br>
+					<a href="Summary.html" class="button">Pay with </a>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id='asal'>
+		<input type="checkbox" id="jack" value="Jack" v-model="Shipping">jack
+		<input type="checkbox" id="john" value="John" v-model="Shipping">
+  		<label for="john">John</label>
+  		
+	</div>
+
+	<div id='asal2'>
+		{{ Shipping }}
+  		
+	</div>
+	
+	<!-- using vue.js -->
+	<script>
+		var form = new Vue({
+			el : "#form-Shipping", 
+			data : {
+				Shipping : ['']
+			}
+
+		})
+
+		var show = new Vue({
+			el : "#form-InShipping", 
+			shipping : {
+				Shipping : ['']
+			}
+
+		})
+
+		methods: {
+  		 addnew() {
+       			show.shipping.push({ nama: this.nama, no_telp: this.no_telp })
+       			this.nama = ''
+       			this.no_telp = ''
+   }
+}
+
+	</script>
+
+</body>
+</html>
